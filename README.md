@@ -1,6 +1,3 @@
-Hi there, my name is Olivia and I am a final year Economics student at the University of Surrey.
-
-I have experience using R and I’m currently teaching myself Python.
+👋 Hi there, my name is Olivia and I am a final year Economics student at the University of Surrey. At the moment I'm teaching myself Python while I finish my studies.
 
 You can reach me by email at olivia.thirkell@icloud.com
-
