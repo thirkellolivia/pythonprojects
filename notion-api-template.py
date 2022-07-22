@@ -5,9 +5,9 @@ import requests
 # set up internal integration key
 # set up database id (integration must have access to database)
 # set up authorisation key
-token = 'secret_aexh37sHbPELr0pOhb5v228Z4MbUV7BtqpaNLiuwqWB'
+token = 'secret_*********************************'
 
-database_id = '12c59c74296d41f0b2ed22661ab0499d'
+database_id = '**********************************'
 
 headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28"}
 
