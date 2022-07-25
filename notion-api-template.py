@@ -5,23 +5,36 @@ import requests
 # set up internal integration key
 # set up database id (integration must have access to database)
 # set up authorisation key
-# NOTE: get current Notion Version from https://developers.notion.com/reference/versioning
-token = 'secret_*********************************'
+token = 'secret_******************************'
 
-database_id = '**********************************'
+database_id = '*******************************'
 
-headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28"}
+headers = {
+    "Authorization": f"Bearer {token}",
+    "Notion-Version": "2022-06-28"
+}
 
-# define function to return database.
-# status code 200 indicates successful http request
-def readDatabase(database_id, headers):
-    readUrl = f"https://api.notion.com/v1/databases/{database_id}/query"
+# define function to get full list of restaurants
+def get_restaurants():
+    url = f'https://api.notion.com/v1/databases/{database_id}/query'
+    r = requests.post(url, headers={headers})
+    result_dict = r.json()
+    restaurant_result = result_dict['results']
+    restaurants = []
+    for restaurant in restaurant_result:
+        restaurant_dict = restaurants_helper(restaurant)
+        restaurants.append(restaurant_dict)
+        return restaurants
 
-    res = requests.request("POST", readUrl, headers=headers)
-    data = res.json()
-    print(res.status_code)
+# helper function for clarity
+def restaurants_helper():
+    restaurant_name = property['Restaurant']
+    location = property['Location']
+    dist = property['Walking distance (mins)']
 
-    with open('./db.json', 'w', encoding='utf8') as f:
-        json.dump(data, f, ensure_ascii=False)
+    return {
+        'restaurant_name': restaurant_name,
+        'location': location,
+        'dist': dist
+    }
 
-readDatabase(database_id, headers)
