@@ -5,6 +5,7 @@ import requests
 # set up internal integration key
 # set up database id (integration must have access to database)
 # set up authorisation key
+# NOTE: get current Notion Version from https://developers.notion.com/reference/versioning
 token = 'secret_*********************************'
 
 database_id = '**********************************'
